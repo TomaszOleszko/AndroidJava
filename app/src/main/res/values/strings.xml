@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="firstName_hint">Wpisz imię</string>
+    <string name="firstName">Imię:</string>
+    <string name="lastName">Nazwisko:</string>
+    <string name="lastName_hint">Wpisz nazwisko</string>
+    <string name="grades_count">Liczba ocen:</string>
+    <string name="grades_count_hint">Wpisz liczbę ocen (5–15)</string>
+    <string name="gradesButton">Oceny</string>
+</resources>
