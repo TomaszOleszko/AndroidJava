@@ -7,4 +7,8 @@
     <string name="grades_count">Liczba ocen:</string>
     <string name="grades_count_hint">Wpisz liczbę ocen (5–15)</string>
     <string name="gradesButton">Oceny</string>
+    <string name="firstNameEmpty">Imię nie może być puste</string>
+    <string name="lastNameEmpty">Nazwisko nie może być puste</string>
+    <string name="gradesCountEmpty">Liczba ocen nie może być pusta</string>
+    <string name="gradesCountRange">Liczba ocen musi być z przedziału [5,15]</string>
 </resources>

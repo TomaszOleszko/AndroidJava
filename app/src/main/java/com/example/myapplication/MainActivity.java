@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-            String firstNameInput = (String) firstnameField.getText().toString();
-            String lastNameInput = (String) lastnameField.getText().toString();
+            String firstNameInput = firstnameField.getText().toString();
+            String lastNameInput = lastnameField.getText().toString();
             String gradesCountInput = gradesCountField.getText().toString();
 
             if(!firstNameInput.isEmpty() && !lastNameInput.isEmpty() && gradesCountInput.length() > 0){
@@ -47,21 +47,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        firstnameField = (EditText) findViewById(R.id.editTextTextPersonName1);
-        lastnameField = (EditText) findViewById(R.id.editTextTextPersonName2);
+        firstnameField = findViewById(R.id.editTextTextPersonName1);
+        lastnameField = findViewById(R.id.editTextTextPersonName2);
         gradesCountField = findViewById(R.id.editTextNumberSigned3);
-        gradesButton = (Button) findViewById(R.id.button);
+        gradesButton = findViewById(R.id.button);
 
         firstnameField.addTextChangedListener(textWatcher);
         lastnameField.addTextChangedListener(textWatcher);
         gradesCountField.addTextChangedListener(textWatcher);
 
-        firstnameField.setOnFocusChangeListener((view, hasFocus) -> checkField(hasFocus,"Imię nie może być puste",firstnameField));
-        lastnameField.setOnFocusChangeListener((view, hasFocus) -> checkField(hasFocus,"Nazwisko nie może być puste",lastnameField));
+        firstnameField.setOnFocusChangeListener((view, hasFocus) -> checkField(hasFocus,getString(R.string.firstNameEmpty),firstnameField));
+        lastnameField.setOnFocusChangeListener((view, hasFocus) -> checkField(hasFocus,getString(R.string.lastNameEmpty),lastnameField));
         gradesCountField.setOnFocusChangeListener((view, hasFocus) -> {
             if(!hasFocus){
                 if(gradesCountField.getText().toString().isEmpty()){
-                    String msg = "Liczba ocen nie może być pusta";
+                    String msg = getString(R.string.gradesCountEmpty);
                     Toast.makeText(MainActivity.this,
                             msg,
                             Toast.LENGTH_SHORT).show();
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else{
                     if(Integer.parseInt(gradesCountField.getText().toString()) < 5 || Integer.parseInt(gradesCountField.getText().toString()) > 15){
-                        String msg = "Liczba ocen musi być z przedziału [5,15]";
+                        String msg = getString(R.string.gradesCountRange);
                         Toast.makeText(MainActivity.this,
                                 msg,
                                 Toast.LENGTH_SHORT).show();
