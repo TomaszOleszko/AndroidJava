@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -13,7 +14,10 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     private EditText firstnameField, lastnameField, gradesCountField;
-    Button gradesButton;
+    private Button gradesButton;
+    public static final String TEXT_KEY =
+            "com.example.w4_two_activities_and.text";
+
 
     private final TextWatcher textWatcher = new TextWatcher() {
         @Override
@@ -41,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,32 +65,35 @@ public class MainActivity extends AppCompatActivity {
             if(!hasFocus){
                 if(gradesCountField.getText().toString().isEmpty()){
                     String msg = getString(R.string.gradesCountEmpty);
-                    Toast.makeText(MainActivity.this,
-                            msg,
-                            Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
                     gradesCountField.setError(msg);
                 }
                 else{
                     if(Integer.parseInt(gradesCountField.getText().toString()) < 5 || Integer.parseInt(gradesCountField.getText().toString()) > 15){
                         String msg = getString(R.string.gradesCountRange);
-                        Toast.makeText(MainActivity.this,
-                                msg,
-                                Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
                         gradesCountField.setError(msg);
                     }
                 }
             }
         });
 
+        gradesButton.setOnClickListener(v -> startGradesActivity());
+    }
+
+    private void startGradesActivity() {
+        Intent intent = new Intent(this, GradesActivity.class);
+        intent.putExtra(TEXT_KEY, gradesCountField.getText().toString());
+        startActivity(intent);
     }
 
     private void checkField(boolean hasFocus, String msg, EditText textField) {
         if(!hasFocus){
-            Toast.makeText(MainActivity.this,
-                    msg,
-                    Toast.LENGTH_SHORT).show();
             if(textField.getText().toString().isEmpty()){
                 textField.setError(msg);
+                Toast.makeText(MainActivity.this,
+                        msg,
+                        Toast.LENGTH_SHORT).show();
             }
         }
     }

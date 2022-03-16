@@ -11,4 +11,21 @@
     <string name="lastNameEmpty">Nazwisko nie może być puste</string>
     <string name="gradesCountEmpty">Liczba ocen nie może być pusta</string>
     <string name="gradesCountRange">Liczba ocen musi być z przedziału [5,15]</string>
+    <string-array name="subjects">
+        <item>Język angielski - zawodowy informatyczny</item>
+        <item>Podstawy sztusznej inteligencji w języku Python</item>
+        <item>Programowanie w języku SWIFT</item>
+        <item>Programowanie aplikacji internetowych</item>
+        <item>Sieci rozproszone</item>
+        <item>Systemy wbudowane</item>
+        <item>Zaawansowane programowanie obiektowe (C++)</item>
+        <item>Zaawansowana inżynieria oprogramowania</item>
+        <item>Bezpieczeństwo informacji</item>
+        <item>Język angielski II</item>
+        <item>Podstawy aplikacji internetowych</item>
+        <item>Podstawy grafiki komputerowej</item>
+        <item>Podstawy inżynierii oprogramowania</item>
+        <item>Podstawy paradygmatów programowania</item>
+        <item>Podstawy techniki cyfrowej</item>
+    </string-array>
 </resources>
