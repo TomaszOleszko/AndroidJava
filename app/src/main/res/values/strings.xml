@@ -16,6 +16,10 @@
     <string name="_5">5</string>
     <string name="_2">2</string>
     <string name="calculate_mean">Oblicz Średnią</string>
+    <string name="nice">Super :)</string>
+    <string name="glhf">Zapraszamy w następnym roku :)</string>
+    <string name="congrats">Gratulacje! Otrzymujesz zaliczenie!</string>
+    <string name="seeYouNextYear">Wysyłam podanie o zaliczenie warunkowe</string>
     <string-array name="subjects">
         <item>Język angielski - zawodowy informatyczny</item>
         <item>Podstawy sztusznej inteligencji w języku Python</item>
