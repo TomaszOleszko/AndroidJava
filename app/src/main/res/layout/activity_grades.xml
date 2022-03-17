@@ -7,12 +7,15 @@
     tools:context=".GradesActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/wiersz_oceny"
+        android:id="@+id/lista_ocen_rv"
         android:layout_width="372dp"
         android:layout_height="643dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.269" />
+        app:layout_constraintVertical_bias="0.269"
+        tools:itemCount="15"
+        tools:listitem="@layout/model" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

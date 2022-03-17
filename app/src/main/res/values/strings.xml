@@ -11,6 +11,10 @@
     <string name="lastNameEmpty">Nazwisko nie może być puste</string>
     <string name="gradesCountEmpty">Liczba ocen nie może być pusta</string>
     <string name="gradesCountRange">Liczba ocen musi być z przedziału [5,15]</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="_2">2</string>
     <string-array name="subjects">
         <item>Język angielski - zawodowy informatyczny</item>
         <item>Podstawy sztusznej inteligencji w języku Python</item>
