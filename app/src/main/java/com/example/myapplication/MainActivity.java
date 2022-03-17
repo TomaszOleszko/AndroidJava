@@ -9,14 +9,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     private EditText firstnameField, lastnameField, gradesCountField;
     private Button gradesButton;
-    public static final String TEXT_KEY =
-            "com.example.w4_two_activities_and.text";
+    public static final String GRADES_COUNT_KEY =
+            "com.example.w4_two_activities_and.GRADES_COUNT_KEY";
+    public static final String FIRSTNAMEFIELD_KEY =
+            "com.example.w4_two_activities_and.FIRSTNAMEFIELD_KEY";
+    public static final String LASTNAMEFIELD_KEY =
+            "com.example.w4_two_activities_and.LASTNAMEFIELD_KEY";
+    public static final String GRADESCOUNTFIELD_KEY =
+            "com.example.w4_two_activities_and.GRADESCOUNTFIELD_KEY";
 
 
     private final TextWatcher textWatcher = new TextWatcher() {
@@ -50,6 +57,34 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setUpFields();
+
+        gradesButton.setOnClickListener(v -> startGradesActivity());
+    }
+
+    private void startGradesActivity() {
+        Intent intent = new Intent(this, GradesActivity.class);
+        intent.putExtra(GRADES_COUNT_KEY, gradesCountField.getText().toString());
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putString(FIRSTNAMEFIELD_KEY, firstnameField.getText().toString());
+        outState.putString(LASTNAMEFIELD_KEY, lastnameField.getText().toString());
+        outState.putString(GRADESCOUNTFIELD_KEY, gradesCountField.getText().toString());
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        firstnameField.setText(savedInstanceState.getString(FIRSTNAMEFIELD_KEY));
+        lastnameField.setText(savedInstanceState.getString(LASTNAMEFIELD_KEY));
+        gradesCountField.setText(savedInstanceState.getString(GRADESCOUNTFIELD_KEY));
+    }
+
+    private void setUpFields() {
         firstnameField = findViewById(R.id.editTextTextPersonName1);
         lastnameField = findViewById(R.id.editTextTextPersonName2);
         gradesCountField = findViewById(R.id.editTextNumberSigned3);
@@ -77,14 +112,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-        gradesButton.setOnClickListener(v -> startGradesActivity());
-    }
-
-    private void startGradesActivity() {
-        Intent intent = new Intent(this, GradesActivity.class);
-        intent.putExtra(TEXT_KEY, gradesCountField.getText().toString());
-        startActivity(intent);
     }
 
     private void checkField(boolean hasFocus, String msg, EditText textField) {

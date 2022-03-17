@@ -34,6 +34,7 @@ public class InteraktywnyAdapterTablicy extends RecyclerView.Adapter<Interaktywn
     public void onBindViewHolder(@NonNull OcenyViewHolder ocenyViewHolder, int numerWiersza){
        String subject = mListaOcen.get(numerWiersza).getNazwa();
        ocenyViewHolder.nameText.setText(subject);
+       ocenyViewHolder.radioGroup.setTag(numerWiersza);
     }
 
     @Override
@@ -48,13 +49,14 @@ public class InteraktywnyAdapterTablicy extends RecyclerView.Adapter<Interaktywn
         @Override
         public void onCheckedChanged(RadioGroup radioGroup, int checkedID) {
             RadioButton radioButton = radioGroup.findViewById(checkedID);
+            int index = (Integer) radioGroup.getTag();
+            mListaOcen.set(index, new ModelOceny(nameText.getText().toString(), Integer.parseInt(radioButton.getText().toString())));
         }
 
         public OcenyViewHolder(@NonNull View glownyElementWiersza){
             super(glownyElementWiersza);
             nameText = itemView.findViewById(R.id.modeltextView);
             radioGroup = itemView.findViewById(R.id.radioGroup1);
-
             radioGroup.setOnCheckedChangeListener(this);
         }
     }
