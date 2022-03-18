@@ -13,4 +13,6 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "My Application"
+def room_version = "2.4.2"
 include ':app'
+include ':database'

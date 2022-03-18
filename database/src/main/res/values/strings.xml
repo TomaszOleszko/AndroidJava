@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">DatabaseApp</string>
+    <string name="menu_item_desc">Clear Data</string>
+</resources>
