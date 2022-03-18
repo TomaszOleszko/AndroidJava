@@ -33,8 +33,26 @@ public class InteraktywnyAdapterTablicy extends RecyclerView.Adapter<Interaktywn
     @Override
     public void onBindViewHolder(@NonNull OcenyViewHolder ocenyViewHolder, int numerWiersza){
        String subject = mListaOcen.get(numerWiersza).getNazwa();
+       int id;
+       switch (mListaOcen.get(numerWiersza).getOcena()){
+           case 2:
+               id = R.id.radioButton2;
+               break;
+           case 3:
+               id = R.id.radioButton3;
+               break;
+           case 4:
+               id = R.id.radioButton4;
+               break;
+           case 5:
+               id = R.id.radioButton5;
+               break;
+           default:
+               throw new IllegalStateException("Unexpected value: " + mListaOcen.get(numerWiersza).getOcena());
+       }
        ocenyViewHolder.nameText.setText(subject);
        ocenyViewHolder.radioGroup.setTag(numerWiersza);
+       ocenyViewHolder.radioGroup.check(id);
     }
 
     @Override
@@ -46,10 +64,17 @@ public class InteraktywnyAdapterTablicy extends RecyclerView.Adapter<Interaktywn
         private final TextView nameText;
         private RadioGroup radioGroup;
 
+        public int getChecked() {
+            return checked;
+        }
+
+        private int checked;
+
         @Override
         public void onCheckedChanged(RadioGroup radioGroup, int checkedID) {
             RadioButton radioButton = radioGroup.findViewById(checkedID);
             int index = (Integer) radioGroup.getTag();
+            checked = checkedID;
             mListaOcen.set(index, new ModelOceny(nameText.getText().toString(), Integer.parseInt(radioButton.getText().toString())));
         }
 

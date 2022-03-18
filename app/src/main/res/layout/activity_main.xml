@@ -134,7 +134,7 @@
         android:layout_width="332dp"
         android:layout_height="281dp"
         android:layout_marginTop="48dp"
-        android:text="kek"
+        android:text="@string/empty"
         android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintHorizontal_bias="0.553"

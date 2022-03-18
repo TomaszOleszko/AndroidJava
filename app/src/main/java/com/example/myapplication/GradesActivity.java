@@ -25,7 +25,7 @@ public class GradesActivity extends AppCompatActivity {
     private Button meanButton;
     private ArrayList<ModelOceny> mSubjects;
     private RecyclerView recyclerView;
-
+    private InteraktywnyAdapterTablicy adapterTablicy = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +74,7 @@ public class GradesActivity extends AppCompatActivity {
     }
 
     private void setAdapter() {
-        InteraktywnyAdapterTablicy adapterTablicy = new InteraktywnyAdapterTablicy(this, mSubjects);
+        adapterTablicy = new InteraktywnyAdapterTablicy(this, mSubjects);
         recyclerView.setAdapter(adapterTablicy);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }

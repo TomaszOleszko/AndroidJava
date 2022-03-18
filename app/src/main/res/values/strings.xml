@@ -20,6 +20,7 @@
     <string name="glhf">Zapraszamy w następnym roku :)</string>
     <string name="congrats">Gratulacje! Otrzymujesz zaliczenie!</string>
     <string name="seeYouNextYear">Wysyłam podanie o zaliczenie warunkowe</string>
+    <string name="empty">pusty</string>
     <string-array name="subjects">
         <item>Język angielski - zawodowy informatyczny</item>
         <item>Podstawy sztusznej inteligencji w języku Python</item>
