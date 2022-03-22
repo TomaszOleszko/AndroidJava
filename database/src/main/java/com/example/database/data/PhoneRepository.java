@@ -1,8 +1,12 @@
-package com.example.database;
+package com.example.database.data;
 
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
+
+import com.example.database.data.Phone;
+import com.example.database.data.PhoneDao;
+import com.example.database.data.PhoneRoomDatabase;
 
 import java.util.List;
 
@@ -15,8 +19,7 @@ public class PhoneRepository {
         PhoneRoomDatabase phoneRoomDatabase = PhoneRoomDatabase.getDatabase(application);
         mPhoneDao = phoneRoomDatabase.phoneDao();
 
-        //mAllPhones = //odczytanie wszystkich elementow z dao
-
+        mAllPhones = mPhoneDao.getAlphabetizedPhonesByProducent();
     }
 
     LiveData<List<Phone>> getAllPhones() {
@@ -25,7 +28,7 @@ public class PhoneRepository {
 
     void deleteAll() {
         PhoneRoomDatabase.databaseWriteExecutor.execute(() -> {
-            //skasowanie wszystkich elementow za pomoca obiektu DAO
+            mPhoneDao.deleteAll();
         });
     }
 

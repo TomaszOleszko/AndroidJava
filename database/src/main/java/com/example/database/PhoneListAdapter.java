@@ -4,9 +4,14 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.database.data.Phone;
+import com.example.database.data.PhoneDao;
+import com.example.database.data.PhoneViewModel;
 
 import java.util.List;
 
@@ -43,6 +48,7 @@ public class PhoneListAdapter extends RecyclerView.Adapter<PhoneListAdapter.Phon
     }
 
     public class PhoneViewHolder extends RecyclerView.ViewHolder {
+
 
         public PhoneViewHolder(@NonNull View itemView) {
             super(itemView);
