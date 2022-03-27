@@ -55,6 +55,7 @@ public class PhoneListAdapter extends RecyclerView.Adapter<PhoneListAdapter.Phon
             PhoneHolder.collumn1.setBackgroundResource(R.drawable.table_content_cell);
             PhoneHolder.collumn2.setText(phone.mModel);
             PhoneHolder.collumn2.setBackgroundResource(R.drawable.table_content_cell);
+            PhoneHolder.phone = phone;
             PhoneHolder.phoneRow.setOnClickListener(view -> {
                 Context context = view.getContext();
                 if (context instanceof MainActivity) {
@@ -82,12 +83,14 @@ public class PhoneListAdapter extends RecyclerView.Adapter<PhoneListAdapter.Phon
         LinearLayout phoneRow;
         TextView collumn1;
         TextView collumn2;
+        Phone phone;
 
         public PhoneViewHolder(@NonNull View itemView) {
             super(itemView);
             collumn1 = itemView.findViewById(R.id.collumn1);
             collumn2 = itemView.findViewById(R.id.collumn2);
             phoneRow = itemView.findViewById(R.id.phoneRow);
+            phone = null;
         }
     }
 }

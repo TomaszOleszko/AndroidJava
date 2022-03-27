@@ -6,9 +6,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -45,6 +47,27 @@ public class MainActivity extends AppCompatActivity {
         mPhoneViewModel.getAllPhones().observe(this, phones -> mAdapter.setPhoneList(phones));
     }
 
+    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setTitle("Usun pozycje");
+            builder.setMessage("Czy jestes pewien?");
+            builder.setPositiveButton("Yes", (dialogInterface, i) -> {
+                int pos = viewHolder.getAdapterPosition();
+                mPhoneViewModel.delete(((PhoneListAdapter.PhoneViewHolder) viewHolder).phone);
+                mAdapter.notifyItemRemoved(pos);
+            });
+            builder.setNegativeButton("No", (dialogInterface, i) -> mAdapter.notifyItemChanged(viewHolder.getAdapterPosition()));
+            builder.show();
+        }
+    };
+
     private void populate_db() {
         ArrayList<Phone> phoneList = new ArrayList<>(Arrays.asList(
                 new Phone(0, "Samsung", "Galaxy-S22", "11.0", "https://www.samsung.com/pl/smartphones/galaxy-s22/"),
@@ -60,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
         ));
 
-        // phoneList.forEach((v) -> mPhoneViewModel.insert(v));
+         //phoneList.forEach((v) -> mPhoneViewModel.insert(v));
     }
 
     private void createRes() {
@@ -69,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
 
         mAdapter = new PhoneListAdapter(this);
         recyclerView.setAdapter(mAdapter);
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+        itemTouchHelper.attachToRecyclerView(recyclerView);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
