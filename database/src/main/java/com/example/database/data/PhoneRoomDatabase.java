@@ -17,11 +17,11 @@ public abstract class PhoneRoomDatabase extends RoomDatabase {
 
     private static volatile PhoneRoomDatabase INSTANCE;
 
-    static PhoneRoomDatabase getDatabase(final Context context){
-        if(INSTANCE == null){
-            synchronized (PhoneRoomDatabase.class){
-                if(INSTANCE == null){
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(),PhoneRoomDatabase.class,"DatabaseName").addCallback(sRoomDatabaseCallback).fallbackToDestructiveMigration().build();
+    static PhoneRoomDatabase getDatabase(final Context context) {
+        if (INSTANCE == null) {
+            synchronized (PhoneRoomDatabase.class) {
+                if (INSTANCE == null) {
+                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), PhoneRoomDatabase.class, "DatabaseName").addCallback(sRoomDatabaseCallback).fallbackToDestructiveMigration().build();
                 }
             }
         }
@@ -31,11 +31,11 @@ public abstract class PhoneRoomDatabase extends RoomDatabase {
     private static final int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-    private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback(){
+    private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
         @Override
-        public void onCreate(@NonNull SupportSQLiteDatabase db){
+        public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
-            databaseWriteExecutor.execute( () -> {
+            databaseWriteExecutor.execute(() -> {
                 PhoneDao dao = INSTANCE.phoneDao();
             });
         }

@@ -23,13 +23,19 @@ public class PhoneRepository {
     }
 
     LiveData<List<Phone>> getAllPhones() {
-        return null; //zwraca wszystkie telefony
+        return mAllPhones; //zwraca wszystkie telefony
     }
 
     void deleteAll() {
-        PhoneRoomDatabase.databaseWriteExecutor.execute(() -> {
-            mPhoneDao.deleteAll();
-        });
+        PhoneRoomDatabase.databaseWriteExecutor.execute(() -> mPhoneDao.deleteAll());
+    }
+
+    void insert(Phone phone) {
+        PhoneRoomDatabase.databaseWriteExecutor.execute(() -> mPhoneDao.insert(phone));
+    }
+
+    void update(Phone phone) {
+        PhoneRoomDatabase.databaseWriteExecutor.execute(() -> mPhoneDao.update(phone));
     }
 
 }
