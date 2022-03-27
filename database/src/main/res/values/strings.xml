@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">DatabaseApp</string>
     <string name="menu_item_desc">Clear Data</string>
+    <string name="producer">Producer</string>
+    <string name="producent">Producent</string>
+    <string name="web_site">WEB SITE</string>
+    <string name="save">SAVE</string>
+    <string name="manufacturer">Manufacturer</string>
+    <string name="model">Model</string>
+    <string name="android_version">Android version</string>
+    <string name="web_site_view">Web site</string>
+    <string name="touch_here">Touch here</string>
+    <string name="update">UPDATE</string>
+    <string name="validUrl">Podaj prawdziwy adres</string>
+    <string name="emptyFields">Pola nie mogą być puste</string>
 </resources>
