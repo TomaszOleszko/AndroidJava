@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
         ));
 
-         //phoneList.forEach((v) -> mPhoneViewModel.insert(v));
+         phoneList.forEach((v) -> mPhoneViewModel.insert(v));
     }
 
     private void createRes() {
