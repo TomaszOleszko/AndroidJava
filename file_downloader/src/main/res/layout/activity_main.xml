@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/urlPlainText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:autofillHints=""
@@ -22,14 +22,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/downloadDataButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:enabled="false"
         android:text="@string/download_data"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintTop_toBottomOf="@+id/urlPlainText" />
 
     <TextView
         android:id="@+id/textView7"
@@ -38,7 +39,7 @@
         android:paddingStart="3dp"
         android:paddingEnd="3dp"
         android:text="@string/address"
-        app:layout_constraintBaseline_toBaselineOf="@+id/editTextTextPersonName2"
+        app:layout_constraintBaseline_toBaselineOf="@+id/urlPlainText"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TableLayout
@@ -50,7 +51,7 @@
         android:stretchColumns="0,1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5">
+        app:layout_constraintTop_toBottomOf="@+id/downloadDataButton">
 
         <TableRow
             android:layout_width="match_parent"
@@ -58,14 +59,13 @@
             android:padding="10dp">
 
             <TextView
-                android:id="@+id/textView9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="7dp"
                 android:text="@string/file_size" />
 
             <TextView
-                android:id="@+id/textView10"
+                android:id="@+id/fileSizeView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="7dp"
@@ -78,14 +78,13 @@
             android:padding="10dp">
 
             <TextView
-                android:id="@+id/textView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="7dp"
                 android:text="@string/file_type" />
 
             <TextView
-                android:id="@+id/textView12"
+                android:id="@+id/fileTypeView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="7dp"
@@ -95,9 +94,10 @@
     </TableLayout>
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/downloadFileButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:enabled="false"
         android:text="@string/download_file"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -111,7 +111,7 @@
         android:stretchColumns="0,1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button6"
+        app:layout_constraintTop_toBottomOf="@+id/downloadFileButton"
         tools:stretchColumns="0,1">
 
         <TableRow
@@ -119,14 +119,13 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="7dp"
-                android:text="@string/file_size" />
+                android:text="@string/BytesDownloaded" />
 
             <TextView
-                android:id="@+id/textView14"
+                android:id="@+id/bytesDownloadedView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="7dp"

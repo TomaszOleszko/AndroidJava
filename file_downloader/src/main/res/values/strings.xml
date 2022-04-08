@@ -7,4 +7,5 @@
     <string name="file_type">Typ pliku:</string>
     <string name="_0" translatable="false">0</string>
     <string name="download_file">POBIERZ PLIK</string>
+    <string name="BytesDownloaded">Pobrano bajtów</string>
 </resources>
