@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     public static ActivityResultLauncher<Intent> mActivityLauncher;
 
+
     public static final String PHONE_KEY = "com.example.database.PHONE_KEY";
 
     @Override
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         createRes();
-        populate_db();
+        //populate_db();
 
         mPhoneViewModel.getAllPhones().observe(this, phones -> mAdapter.setPhoneList(phones));
     }

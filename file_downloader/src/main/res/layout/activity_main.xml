@@ -104,6 +104,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
 
     <TableLayout
+        android:id="@+id/tableLayout2"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="1dp"
@@ -133,5 +134,21 @@
         </TableRow>
 
     </TableLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginTop="-1dp"
+        android:max="100"
+        android:padding="10dp"
+        android:progress="0"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout2"
+        tools:visibility="invisible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,4 +8,10 @@
     <string name="_0" translatable="false">0</string>
     <string name="download_file">POBIERZ PLIK</string>
     <string name="BytesDownloaded">Pobrano bajtów</string>
+    <string name="channelName">chanelNAME</string>
+    <string name="channeDesc">Opis kanalu</string>
+    <string name="channelId">channelid</string>
+    <string name="download">download</string>
+    <string name="cancel">Cancel</string>
+
 </resources>
