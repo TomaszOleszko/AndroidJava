@@ -52,6 +52,7 @@ class MainActivity : AppCompatActivity() {
         val fileDownloadExecutor = Executors.newSingleThreadExecutor()
         val donwloadHandler = Handler(Looper.getMainLooper())
 
+        //https://pngimg.com/uploads/lion/lion_PNG3809.png
         var mWebPath = ""
 
         mFileSizeView = findViewById(R.id.fileSizeView)
@@ -108,8 +109,6 @@ class MainActivity : AppCompatActivity() {
         mdownloadFileButton.setOnClickListener {
             mprogressBar.visibility = View.VISIBLE
             downloadImage(mWebPath)
-
-
         }
     }
 
