@@ -16,3 +16,4 @@ rootProject.name = "My Application"
 include ':app'
 include ':database'
 include ':file_downloader'
+include ':painter'
