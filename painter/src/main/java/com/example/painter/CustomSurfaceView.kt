@@ -15,14 +15,13 @@ class CustomSurfaceView(context: Context, attrs: AttributeSet?) : SurfaceView(co
     private var path = Path()
 
     private var mPojemnik: SurfaceHolder = holder
-    private lateinit var mWatekRysujacy: Thread
-    private var mWatekPracuje = false
+
     private var mBlokada = Object()
 
-    private lateinit var mBitmapa: Bitmap
+    lateinit var mBitmapa: Bitmap
     private lateinit var mKanwa: Canvas
 
-    private var drawColor = Color.BLACK
+    private var drawColor = Color.RED
     private val mPaintS = Paint().apply {
         color = drawColor
         style = Paint.Style.STROKE
@@ -34,7 +33,7 @@ class CustomSurfaceView(context: Context, attrs: AttributeSet?) : SurfaceView(co
         strokeWidth = 2F
     }
 
-    fun changePaintColor(color: Int){
+    fun changePaintColor(color: Int) {
         drawColor = color
         mPaintS.color = drawColor
         mPaintF.color = drawColor
@@ -57,13 +56,14 @@ class CustomSurfaceView(context: Context, attrs: AttributeSet?) : SurfaceView(co
         setZOrderOnTop(true)
         this.setBackgroundColor(Color.RED)
     }
+
     override fun onSizeChanged(width: Int, height: Int, oldWidth: Int, oldHeight: Int) {
         super.onSizeChanged(width, height, oldWidth, oldHeight)
 
         if (::mBitmapa.isInitialized) mBitmapa.recycle()
         mBitmapa = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
         mKanwa = Canvas(mBitmapa)
-        mKanwa.drawColor(Color.BLUE)
+        mKanwa.drawColor(Color.WHITE)
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -71,31 +71,23 @@ class CustomSurfaceView(context: Context, attrs: AttributeSet?) : SurfaceView(co
     }
 
     override fun surfaceCreated(holder: SurfaceHolder) {
-        mBitmapa = Bitmap.createBitmap(holder.surfaceFrame.width(),holder.surfaceFrame.height(), Bitmap.Config.ARGB_8888)
+        mBitmapa = Bitmap.createBitmap(
+            holder.surfaceFrame.width(),
+            holder.surfaceFrame.height(),
+            Bitmap.Config.ARGB_8888
+        )
         mKanwa = Canvas(mBitmapa)
-        mKanwa.drawColor(Color.BLUE)
-        resumeDrawing()
+        mKanwa.drawColor(Color.WHITE)
+
         screenHeight = height
         screenWidth = width
     }
 
     override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {}
 
-    override fun surfaceDestroyed(holder: SurfaceHolder) {
-        pauseDrawing()
-    }
+    override fun surfaceDestroyed(holder: SurfaceHolder) {}
 
-    fun resumeDrawing() {
-       // mWatekRysujacy = Thread(this)
-        mWatekPracuje = true
-        mWatekRysujacy.start()
-    }
-
-    fun pauseDrawing() {
-        mWatekPracuje = false
-    }
-
-    fun clearCanva(){
+    fun clearCanvas() {
         mKanwa.drawColor(Color.WHITE)
     }
 
@@ -114,7 +106,6 @@ class CustomSurfaceView(context: Context, attrs: AttributeSet?) : SurfaceView(co
                     MotionEvent.ACTION_UP -> touchUp()
                 }
             }
-
         }
         return true
     }
@@ -156,8 +147,5 @@ class CustomSurfaceView(context: Context, attrs: AttributeSet?) : SurfaceView(co
         mKanwa.drawCircle(currentX, currentY, 10F, mPaintF)
         path.reset()
     }
-
-
-
 
 }

@@ -8,13 +8,15 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import java.time.Duration
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        supportActionBar?.hide()
+        //supportActionBar?.hide()
 
         val surfaceView = CustomSurfaceView(applicationContext, null)
         val drawCanvas = findViewById<LinearLayout>(R.id.CustomSurfaceView)
@@ -42,7 +44,13 @@ class MainActivity : AppCompatActivity() {
 
         val button_CLEAR = findViewById<ImageButton>(R.id.imageButton)
         button_CLEAR.setOnClickListener {
-            surfaceView.clearCanva()
+            surfaceView.clearCanvas()
+        }
+
+        val button_SAVE = findViewById<Button>(R.id.button5)
+        button_SAVE.setOnClickListener {
+            val bitmap = surfaceView.mBitmapa
+            Toast.makeText(applicationContext,"Zapisano obraz",Toast.LENGTH_SHORT).show()
         }
 
     }
