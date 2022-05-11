@@ -2,13 +2,8 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,10 +17,8 @@ public class GradesActivity extends AppCompatActivity {
     public static final String MSUBJECTS_KEY =
             "com.example.w4_two_activities_and.MSUBJECTS_KEY";
 
-    private Button meanButton;
     private ArrayList<ModelOceny> mSubjects;
     private RecyclerView recyclerView;
-    private InteraktywnyAdapterTablicy adapterTablicy = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +31,7 @@ public class GradesActivity extends AppCompatActivity {
         setSubjcetsInfo();
         setAdapter();
 
-        meanButton = findViewById(R.id.meanButton);
+        Button meanButton = findViewById(R.id.meanButton);
         meanButton.setOnClickListener(view -> {
             double srednia = (double) mSubjects.stream().mapToInt(ModelOceny::getOcena).sum() / mSubjects.size();
             Bundle bundle = new Bundle(1);
@@ -74,7 +67,7 @@ public class GradesActivity extends AppCompatActivity {
     }
 
     private void setAdapter() {
-        adapterTablicy = new InteraktywnyAdapterTablicy(this, mSubjects);
+        InteraktywnyAdapterTablicy adapterTablicy = new InteraktywnyAdapterTablicy(this, mSubjects);
         recyclerView.setAdapter(adapterTablicy);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }

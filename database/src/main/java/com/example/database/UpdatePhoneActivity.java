@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.database.data.Phone;
 
 public class UpdatePhoneActivity extends AppCompatActivity {
-    private Button button_Cancel, button_Update, button_www;
     private EditText manufacturer_field, model_field, androidVersion_field, webSite_field;
     public static final String PHONE_OUT_KEY = "com.example.database.PHONE_OUT_KEY";
 
@@ -24,9 +23,9 @@ public class UpdatePhoneActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.update_phone_activity);
 
-        button_Cancel = findViewById(R.id.button_Cancel);
-        button_Update = findViewById(R.id.button_save);
-        button_www = findViewById(R.id.button_WebSite);
+        Button button_Cancel = findViewById(R.id.button_Cancel);
+        Button button_Update = findViewById(R.id.button_save);
+        Button button_www = findViewById(R.id.button_WebSite);
 
         manufacturer_field = findViewById(R.id.editTextManufacturer);
         model_field = findViewById(R.id.editTextModel);

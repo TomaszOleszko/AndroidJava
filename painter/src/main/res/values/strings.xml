@@ -6,4 +6,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="save">Save</string>
     <string name="clear_button">clear button</string>
+    <string name="back">BACK</string>
+    <string name="image">Image</string>
 </resources>

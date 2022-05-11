@@ -10,19 +10,15 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.example.database.data.Phone;
 import com.example.database.data.PhoneViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -30,8 +26,6 @@ public class MainActivity extends AppCompatActivity {
 
     private PhoneViewModel mPhoneViewModel;
     private PhoneListAdapter mAdapter;
-    private FloatingActionButton fab;
-    private RecyclerView recyclerView;
     public static ActivityResultLauncher<Intent> mActivityLauncher;
 
 
@@ -88,8 +82,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void createRes() {
-        recyclerView = findViewById(R.id.recyclerview);
-        fab = findViewById(R.id.floatingActionButton);
+        RecyclerView recyclerView = findViewById(R.id.recyclerview);
+        FloatingActionButton fab = findViewById(R.id.floatingActionButton);
 
         mAdapter = new PhoneListAdapter(this);
         recyclerView.setAdapter(mAdapter);

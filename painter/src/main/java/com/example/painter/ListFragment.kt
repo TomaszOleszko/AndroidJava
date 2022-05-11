@@ -22,6 +22,7 @@ class ListFragment : Fragment() {
     private lateinit var myImage: ImageView
     private lateinit var myImage1: ImageView
     private lateinit var myImage2: ImageView
+    private lateinit var myImage3: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,37 +44,43 @@ class ListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         myImage = view.findViewById(R.id.imageView)!!
         myImage.setOnClickListener {
-            setWidthAndHeightTo0(myImage1, myImage2)
-            val clp = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT)
-            it.layoutParams = clp
+            setWidthAndHeightTo0(myImage1, myImage2, myImage3)
+            setLinearParams(it)
         }
         myImage1 = view.findViewById(R.id.imageView2)!!
         myImage1.setOnClickListener {
-            setWidthAndHeightTo0(myImage, myImage2)
-            val clp = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT)
-            it.layoutParams = clp
+            setWidthAndHeightTo0(myImage, myImage2, myImage3)
+            setLinearParams(it)
         }
         myImage2 = view.findViewById(R.id.imageView3)!!
         myImage2.setOnClickListener {
-            setWidthAndHeightTo0(myImage, myImage1)
-            val clp = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT)
-            it.layoutParams = clp
+            setWidthAndHeightTo0(myImage, myImage1, myImage3)
+            setLinearParams(it)
         }
-        val images = listOf(myImage, myImage1, myImage2)
+        myImage3 = view.findViewById(R.id.imageView4)!!
+        myImage3.setOnClickListener {
+            setWidthAndHeightTo0(myImage, myImage1, myImage2)
+            setLinearParams(it)
+        }
+        val images = listOf(myImage, myImage1, myImage2, myImage3)
         setImageBitmap(images)
     }
 
-    private fun setWidthAndHeightTo0(myImage1: ImageView, myImage2: ImageView) {
+    private fun setLinearParams(it: View) {
+        val clp = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+        it.layoutParams = clp
+    }
+
+    private fun setWidthAndHeightTo0(myImage1: ImageView, myImage2: ImageView, myImage3: ImageView) {
         myImage1.layoutParams.height = 0
         myImage1.layoutParams.width = 0
         myImage2.layoutParams.height = 0
         myImage2.layoutParams.width = 0
+        myImage3.layoutParams.height = 0
+        myImage3.layoutParams.width = 0
     }
 
 
@@ -84,7 +91,7 @@ class ListFragment : Fragment() {
             bitmap?.forEach {
                 images[counter].setImageBitmap(it)
                 when (counter) {
-                    2 -> counter = 0
+                    3 -> counter = 0
                     else -> counter++
                 }
             }
@@ -93,22 +100,5 @@ class ListFragment : Fragment() {
 
     companion object {
         var counter = 0
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ListFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ListFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
     }
 }
