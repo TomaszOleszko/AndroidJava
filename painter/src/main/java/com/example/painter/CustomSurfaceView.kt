@@ -57,6 +57,11 @@ class CustomSurfaceView(context: Context, attrs: AttributeSet?) : SurfaceView(co
         this.setBackgroundColor(Color.RED)
     }
 
+    override fun onWindowVisibilityChanged(visibility: Int) {
+
+        super.onWindowVisibilityChanged(visibility)
+    }
+
     override fun onSizeChanged(width: Int, height: Int, oldWidth: Int, oldHeight: Int) {
         super.onSizeChanged(width, height, oldWidth, oldHeight)
 

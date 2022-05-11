@@ -2,4 +2,8 @@
     <string name="app_name">Painter</string>
     <string name="desc">Grafika</string>
     <string name="x">x</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="save">Save</string>
+    <string name="clear_button">clear button</string>
 </resources>

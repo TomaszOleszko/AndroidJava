@@ -48,7 +48,6 @@ class MainActivity : AppCompatActivity() {
         val mdownloadFileDataButton = findViewById<Button>(R.id.downloadDataButton)
         val mdownloadFileButton = findViewById<Button>(R.id.downloadFileButton)
 
-
         val fileDownloadExecutor = Executors.newSingleThreadExecutor()
         val donwloadHandler = Handler(Looper.getMainLooper())
 
@@ -242,6 +241,7 @@ class MainActivity : AppCompatActivity() {
             connection = url.openConnection() as HttpURLConnection
             connection.requestMethod = "GET"
             connection.connect()
+
 
             val fileSize = connection.contentLength
             val fileType = connection.contentType
